@@ -12,8 +12,18 @@
 
 ---
 
+## セットアップ方法
+```sh
+mkdir -p ~/.config/wezterm
+ln -sf ~/dotfiles/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
+```
+
+---
+
 ## リポジトリ構成
 ```text
 dotfiles/
 ├── README.md
+└── wezterm/
+    ├── wezterm.lua
 ```
