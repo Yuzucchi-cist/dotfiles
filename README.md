@@ -13,9 +13,41 @@
 ---
 
 ## セットアップ方法
+
+### Wezterm
 ```sh
 mkdir -p ~/.config/wezterm
 ln -sf ~/dotfiles/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
+```
+
+### Vim
+denops.vimのエラー対応のため、Vimの最新バージョンをソースからビルドして使用しています。
+
+```sh
+# 依存パッケージのインストール
+sudo apt-get update
+sudo apt-get install -y build-essential libncurses-dev git
+
+# Vimのソースコードを取得
+cd /tmp
+git clone https://github.com/vim/vim.git
+cd vim
+
+# ビルド設定
+./configure \
+  --with-features=huge \
+  --enable-multibyte \
+  --enable-python3interp=yes \
+  --with-python3-config-dir=$(python3-config --configdir) \
+  --enable-cscope \
+  --prefix=/usr/local
+
+# ビルドとインストール
+make -j$(nproc)
+sudo make install
+
+# バージョン確認
+vim --version
 ```
 
 ---
